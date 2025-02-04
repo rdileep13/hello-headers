@@ -12,6 +12,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 		fmt.Printf("%v: %v\n", k, v)
 	}
 	fmt.Printf("Done processing Request at %v\n", time.Now())
+	for name, headers := range r.Header {
+        	for _, h := range headers {
+        		fmt.Fprintf(w, "%v: %v\n", name, h)
+        	}
+    	}
 }
 
 func main() {
